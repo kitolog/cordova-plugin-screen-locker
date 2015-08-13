@@ -50,7 +50,7 @@ public class ScreenLocker extends CordovaPlugin {
 
             if (ACTION_LOCK.equals(action)) {
 //                Lock device
-                WindowManager wm = this.cordova.getActivity().getSystemService(Context.WINDOW_SERVICE);
+                WindowManager wm = this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
                 DevicePolicyManager mDPM;
                 mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
                 callbackContext.success();
