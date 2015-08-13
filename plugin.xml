@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.applurk.cordova-plugin-unlock-screen"
-        version="0.2.11">
-    <name>Cordova UnlockScreen</name>
-    <description>Unlock device screen by calling plugin</description>
+        id="com.applurk.cordova-screen-locker"
+        version="0.1">
+    <name>Cordova ScreenLocker</name>
+    <description>Plugin allows lock and unlock device screen by calling plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,device,unlock,screen,android</keywords>
+    <keywords>cordova,device,unlock,lock,screen,android</keywords>
     <repo></repo>
     <issue></issue>
-    <js-module src="www/UnlockScreen.js" name="UnlockScreen">
-        <clobbers target="UnlockScreen"/>
+    <js-module src="www/ScreenLocker.js" name="ScreenLocker">
+        <clobbers target="ScreenLocker"/>
     </js-module>
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="UnlockScreen">
-                <param name="android-package" value="com.applurk.plugin.UnlockScreen"/>
-            </feature>
-        </config-file>
-        <source-file src="src/android/UnlockScreen.java" target-dir="src/"/>
-    </platform>
-
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Media" >
-                <param name="android-package" value="org.apache.cordova.media.AudioHandler"/>
+            <feature name="ScreenLocker">
+                <param name="android-package" value="com.applurk.plugin.ScreenLocker"/>
             </feature>
         </config-file>
 
@@ -33,8 +24,6 @@
             <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
         </config-file>
 
-        <source-file src="src/android/AudioHandler.java" target-dir="src/org/apache/cordova/media" />
-        <source-file src="src/android/AudioPlayer.java" target-dir="src/org/apache/cordova/media" />
-        <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/media" />
+        <source-file src="src/android/ScreenLocker.java" target-dir="src/"/>
     </platform>
 </plugin>
