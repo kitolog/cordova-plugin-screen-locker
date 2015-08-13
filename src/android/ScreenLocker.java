@@ -50,7 +50,7 @@ public class ScreenLocker extends CordovaPlugin {
 
             if (ACTION_LOCK.equals(action)) {
 //                Lock device
-                WindowManager wm = this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
+                WindowManager wm = (WindowManager) this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
                 DevicePolicyManager mDPM;
                 mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
                 callbackContext.success();
@@ -58,8 +58,8 @@ public class ScreenLocker extends CordovaPlugin {
             } else if (ACTION_UNLOCK.equals(action)) {
 //                Unlock
 //                http://developer.android.com/reference/android/app/Activity.html#getWindow()
-                WindowManager wm = this.cordova.getActivity().getSystemService(Context.WINDOW_SERVICE);
-                Window window = getWindow();
+                WindowManager wm = (WindowManager) this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
+                Window window = this.cordova.getActivity().getWindow();
                 window.addFlags(LayoutParams.FLAG_DISMISS_KEYGUARD);
                 window.addFlags(LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                 window.addFlags(LayoutParams.FLAG_TURN_SCREEN_ON);
