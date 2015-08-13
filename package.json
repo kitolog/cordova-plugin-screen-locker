@@ -1,0 +1,21 @@
+{
+    "version": "0.1",
+    "name": "com.applurk.cordova-plugin-unlock-screen",
+    "cordova_name": "UnlockScreen",
+    "description": "Unlock device screen by calling plugin",
+    "license": "Apache 2.0",
+    "repo": "",
+    "issue": "",
+    "keywords": [
+        "cordova",
+        "device",
+        "unlock",
+        "screen",
+        "android",
+    ],
+    "platforms": [
+        "android",
+    ],
+    "engines": [],
+    "englishdoc": ""
+}
