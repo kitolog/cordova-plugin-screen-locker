@@ -7,11 +7,13 @@
     <description>Plugin allows lock and unlock device screen by calling plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,device,unlock,lock,screen,android</keywords>
-    <repo></repo>
+    <repo>https://github.com/kitolog/cordova-plugin-screen-locker</repo>
     <issue></issue>
+
     <js-module src="www/ScreenLocker.js" name="ScreenLocker">
         <clobbers target="window.screenLocker"/>
     </js-module>
+
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -24,6 +26,6 @@
             <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
         </config-file>
 
-        <source-file src="src/android/ScreenLocker.java" target-dir="src/"/>
+        <source-file src="src/android/ScreenLocker.java" target-dir="src/com/applurk/plugin"/>
     </platform>
 </plugin>

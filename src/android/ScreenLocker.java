@@ -1,3 +1,5 @@
+package com.applurk.plugin.ScreenLocker;
+
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -41,6 +43,7 @@ public class ScreenLocker extends CordovaPlugin {
         Log.v(TAG, "Init ScreenLocker");
     }
 
+    @Override
     public boolean execute(final String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         boolean result = false;
 // Shows a toast
