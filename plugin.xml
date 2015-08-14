@@ -10,7 +10,7 @@
     <repo></repo>
     <issue></issue>
     <js-module src="www/ScreenLocker.js" name="ScreenLocker">
-        <clobbers target="ScreenLocker"/>
+        <clobbers target="window.screenLocker"/>
     </js-module>
     <!-- android -->
     <platform name="android">
