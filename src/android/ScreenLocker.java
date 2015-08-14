@@ -44,7 +44,7 @@ public class ScreenLocker extends CordovaPlugin {
     }
 
     @Override
-    public boolean execute(final String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(final String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         boolean result = false;
 // Shows a toast
         Log.v(TAG, "ScreenLocker received:" + action);
