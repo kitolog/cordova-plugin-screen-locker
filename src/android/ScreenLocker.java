@@ -69,7 +69,7 @@ public class ScreenLocker extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Window window = this.cordova.getActivity().getWindow();
+                        Window window = cordova.getActivity().getWindow();
                         window.addFlags(LayoutParams.FLAG_DISMISS_KEYGUARD);
                         window.addFlags(LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                         window.addFlags(LayoutParams.FLAG_TURN_SCREEN_ON);
