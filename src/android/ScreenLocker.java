@@ -3,6 +3,9 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.Context;
+
 import android.util.Log;
 import android.provider.Settings;
 import android.widget.Toast;
@@ -39,22 +42,22 @@ public class ScreenLocker extends CordovaPlugin {
     }
 
     public boolean execute(final String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        final int duration = Toast.LENGTH_SHORT;
+        boolean result = false;
 // Shows a toast
         Log.v(TAG, "ScreenLocker received:" + action);
 
         try {
             JSONObject arg_object = args.getJSONObject(0);
-//                this.cordova.getActivity().startActivity(calIntent);
-//                Get the window from the context
-
             if (ACTION_LOCK.equals(action)) {
 //                Lock device
+                Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                 WindowManager wm = (WindowManager) this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
                 DevicePolicyManager mDPM;
-                mDPM = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+                mDPM = (DevicePolicyManager) this.cordova.getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
+                mDPM.lockNow();
+                Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                 callbackContext.success();
-                return true;
+                result = true;
             } else if (ACTION_UNLOCK.equals(action)) {
 //                Unlock
 //                http://developer.android.com/reference/android/app/Activity.html#getWindow()
@@ -63,23 +66,18 @@ public class ScreenLocker extends CordovaPlugin {
                 window.addFlags(LayoutParams.FLAG_DISMISS_KEYGUARD);
                 window.addFlags(LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                 window.addFlags(LayoutParams.FLAG_TURN_SCREEN_ON);
+                Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                 callbackContext.success();
-                return true;
+                result = true;
             }
             callbackContext.error("Invalid action");
-            return false;
+            result = false;
         } catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
             callbackContext.error(e.getMessage());
-            return false;
+            result = false;
         }
 
-//        cordova.getActivity().runOnUiThread(new Runnable() {
-//            public void run() {
-//                Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), action, duration);
-//                toast.show();
-//            }
-//        });
-        return true;
+        return result;
     }
 }
