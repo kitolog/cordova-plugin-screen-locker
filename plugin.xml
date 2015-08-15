@@ -24,6 +24,7 @@
 
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
         </config-file>
 
         <source-file src="src/android/ScreenLocker.java" target-dir="src/com/applurk/plugin"/>
