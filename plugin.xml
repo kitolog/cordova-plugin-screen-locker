@@ -4,7 +4,7 @@
         id="com.applurk.cordova-screen-locker"
         version="0.1">
     <name>Cordova ScreenLocker</name>
-    <description>Plugin allows lock and unlock device screen by calling plugin</description>
+    <description>The plugin helps you to lock and unlock device screen programmatically</description>
     <license>Apache 2.0</license>
     <keywords>cordova,device,unlock,lock,screen,android</keywords>
     <repo>https://github.com/kitolog/cordova-plugin-screen-locker</repo>
