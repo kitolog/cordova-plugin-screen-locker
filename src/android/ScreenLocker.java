@@ -90,18 +90,21 @@ public class ScreenLocker extends CordovaPlugin {
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Window window = cordova.getActivity().getWindow();
+                    	window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+                    	window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                    	window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		
+                    	//KeyguardManager keyguardManager = (KeyguardManager) cordova.getActivity().getSystemService(Context.KEYGUARD_SERVICE);
+                        //KeyguardManager.KeyguardLock keyguardLock =  keyguardManager.newKeyguardLock("Tag");
+                        //keyguardLock.disableKeyguard();
+                        
                         PowerManager powerManager = (PowerManager) cordova.getActivity().getSystemService(Context.POWER_SERVICE);
-                        PowerManager.WakeLock wakeLock = powerManager.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK
-                                | PowerManager.FULL_WAKE_LOCK
-                                | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
+                        PowerManager.WakeLock wakeLock = powerManager.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE), "TAG");
                         if(wakeLock.isHeld()) {
                             wakeLock.release();
                         }
-                        wakeLock.acquire();
-
-                        KeyguardManager keyguardManager = (KeyguardManager) cordova.getActivity().getSystemService(Context.KEYGUARD_SERVICE);
-                        KeyguardManager.KeyguardLock keyguardLock =  keyguardManager.newKeyguardLock("Tag");
-                        keyguardLock.disableKeyguard();
+                        wakeLock.acquire(5);
 
                         Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                         callbackContext.success();
