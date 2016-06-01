@@ -49,26 +49,17 @@ public class ScreenLocker extends CordovaPlugin {
     @Override
     public boolean execute(final String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         boolean result = false;
-// Shows a toast
         Log.v(TAG, "ScreenLocker received:" + action);
 
         try {
             JSONObject arg_object = args.getJSONObject(0);
+            final int  acquireTime = arg_object.getInt("timeout");
+
             if (ACTION_LOCK.equals(action)) {
-//                Lock device
                 Log.v(TAG, "Lock action not implemented, please wait for a new plugin version");
-//                WindowManager wm = (WindowManager) this.cordova.getActivity().getSystemService(this.cordova.getActivity().WINDOW_SERVICE);
-//                DevicePolicyManager mDPM;
-//                mDPM = (DevicePolicyManager) this.cordova.getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
-//                mDPM.lockNow();
-//                Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
-//                callbackContext.success();
-//                result = true;
                 callbackContext.error("Not implemented");
                 result = false;
             } else if (ACTION_UNLOCK_WINDOW.equals(action)) {
-//                Unlock
-//                http://developer.android.com/reference/android/app/Activity.html#getWindow()
                 Log.v(TAG, "ScreenLocker received ACTION_UNLOCK_WINDOW");
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -84,8 +75,6 @@ public class ScreenLocker extends CordovaPlugin {
 
                 result = true;
             } else if (ACTION_UNLOCK.equals(action)) {
-//                Unlock
-//                http://developer.android.com/reference/android/app/Activity.html#getWindow()
                 Log.v(TAG, "ScreenLocker received ACTION_UNLOCK");
                 cordova.getActivity().runOnUiThread(new Runnable() {
                     @Override
@@ -94,18 +83,13 @@ public class ScreenLocker extends CordovaPlugin {
                     	window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                     	window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
                     	window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-		
-                    	//KeyguardManager keyguardManager = (KeyguardManager) cordova.getActivity().getSystemService(Context.KEYGUARD_SERVICE);
-                        //KeyguardManager.KeyguardLock keyguardLock =  keyguardManager.newKeyguardLock("Tag");
-                        //keyguardLock.disableKeyguard();
-                        
+
                         PowerManager powerManager = (PowerManager) cordova.getActivity().getSystemService(Context.POWER_SERVICE);
                         PowerManager.WakeLock wakeLock = powerManager.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE), "TAG");
                         if(wakeLock.isHeld()) {
                             wakeLock.release();
                         }
-                        wakeLock.acquire(5);
-
+                        wakeLock.acquire(acquireTime);
                         Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                         callbackContext.success();
                     }
