@@ -14,10 +14,17 @@ cordova plugin add https://github.com/kitolog/cordova-plugin-screen-locker.git
 
 #Sample
 
-const success = () => { console.log('screen unlock success'); };
-const error = (e) => { console.log('screen unlock error', e); };
+var successCallback = function() {
+  console.log('screen unlock success');
+  // do some staff here
+};
 
-window.screenLocker.unlock(success, error, 10);
+var errorCallback = function(e) {
+  console.log('error');
+  console.log(e);
+};
+
+window.screenLocker.unlock(successCallback, errorCallback, 10);  // 10 seconds timeout
 
 #License
 
