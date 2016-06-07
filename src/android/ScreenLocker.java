@@ -73,7 +73,13 @@ public class ScreenLocker extends CordovaPlugin {
                         if(wakeLock.isHeld()) {
                             wakeLock.release();
                         }
-                        wakeLock.acquire(acquireTime);
+                        if(acquireTime > 0) {
+                            wakeLock.acquire(acquireTime);
+                        }
+                        else
+                        {
+                            wakeLock.acquire();
+                        }
                         Log.v(TAG, "ScreenLocker received SUCCESS:" + action);
                         callbackContext.success();
                     }
