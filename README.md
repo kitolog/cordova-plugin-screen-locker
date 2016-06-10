@@ -10,29 +10,25 @@ Other platforms will be added in new versions of plugin
 
 #Installation
 
+```bash
 cordova plugin add https://github.com/kitolog/cordova-plugin-screen-locker.git
+```
 
 #Sample
 
+```javascript
 var successCallback = function() {
-
   console.log('screen unlock success');
-
   // do some staff here
-
 };
 
 var errorCallback = function(e) {
-
-  console.log('error');
-
-  console.log(e);
-
+  console.log('error: ' + e);
 };
 
-window.screenLocker.unlock(successCallback, errorCallback, 10);  // 10 seconds unlock timeout (optional)
-
+window.screenLocker.unlock(successCallback, errorCallback, 10);  // 10 seconds unlock timeout (third parameter is optional)
 window.screenLocker.lock(successFun, errorFun);  // release screen unlock
+```
 
 #License
 
