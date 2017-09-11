@@ -12,7 +12,7 @@
         "lock",
         "unlock",
         "screen",
-        "android",
+        "android"
     ],
     "platforms": [
         "android",
