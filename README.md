@@ -1,6 +1,9 @@
 # Cordova Screen Locker Plugin
 The plugin helps you to lock and unlock device screen programmatically.
 
+#### Notes
+this repo is forked from [https://github.com/kitolog/cordova-plugin-screen-locker.git](https://github.com/kitolog/cordova-plugin-screen-locker.git)
+
 #Supported Platforms
 
 The plugin version 0.2.1 supports only 
@@ -11,7 +14,7 @@ Other platforms will be added in new versions of plugin
 #Installation
 
 ```bash
-cordova plugin add https://github.com/kitolog/cordova-plugin-screen-locker.git
+cordova plugin add cordova-plugin-screen-locker
 ```
 
 #Sample
