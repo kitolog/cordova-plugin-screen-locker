@@ -1,11 +1,18 @@
 {
-    "version": "0.1.1",
-    "name": "cordova-screen-locker",
     "cordova_name": "ScreenLocker",
+    "name": "cordova-plugin-screen-locker",
+    "version": "0.2.2",
     "description": "Plugin allows lock and unlock device screen by calling plugin",
-    "license": "Apache 2.0",
-    "repo": "",
-    "issue": "",
+    "cordova": {
+        "id": "cordova-plugin-screen-locker",
+        "platforms": [
+            "android"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pengkobe/cordova-plugin-screen-locker.git"
+    },
     "keywords": [
         "cordova",
         "device",
@@ -14,9 +21,8 @@
         "screen",
         "android"
     ],
-    "platforms": [
-        "android"
-    ],
     "engines": [],
-    "englishdoc": ""
+    "englishdoc": "",
+    "license": "Apache 2.0",
+    "homepage": "https://github.com/pengkobe/cordova-plugin-screen-locker#readme"
 }
