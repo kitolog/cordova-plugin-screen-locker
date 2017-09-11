@@ -1,5 +1,5 @@
 {
-    "version": "0.1",
+    "version": "0.1.1",
     "name": "com.applurk.cordova-screen-locker",
     "cordova_name": "ScreenLocker",
     "description": "Plugin allows lock and unlock device screen by calling plugin",
