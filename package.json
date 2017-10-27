@@ -12,10 +12,10 @@
         "lock",
         "unlock",
         "screen",
-        "android",
+        "android"
     ],
     "platforms": [
-        "android",
+        "android"
     ],
     "engines": [],
     "englishdoc": ""
